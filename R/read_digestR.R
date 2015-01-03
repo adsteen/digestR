@@ -33,5 +33,8 @@ read_digestR <- function(data.fn="data/ex_data_wide.csv",
   # Remove na cases
   dm_mapped[!is.na(dm_mapped$abs.reads), ]
 
+  # Calculate relative reads
+  dm_mapped$frac.reads <- dm_mapped$abs.reads/dm_mapped$sum.reads
+
   dm_mapped
 }
