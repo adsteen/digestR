@@ -30,5 +30,8 @@ read_digestR <- function(data.fn="data/ex_data_wide.csv",
   # Merge merged-data-and-key with functions for each pfam
   dm_mapped <- merge(dm_merge, min.map, all=TRUE)
 
+  # Remove na cases
+  dm_mapped[!is.na(dm_mapped$abs.reads), ]
+
   dm_mapped
 }
