@@ -4,7 +4,7 @@
 ##' @param data.fn
 ##' @param key.fn
 ##' @param map.fn
-##'
+##' @export
 read_digestR <- function(data.fn="data/ex_data_wide.csv",
                          key.fn="data/ex_sample_key.csv",
                          map.fn="data/pfam_fxn_map.csv") {
