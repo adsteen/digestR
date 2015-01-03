@@ -1,8 +1,11 @@
 ##' Plots significant reads
 ##'
 ##' @param d a data frame created by read_digestR
-##' @param
-plot_signif <- function(d, indep.var="depth", dep.var="frac.reads", alpha=0.05) {
+##' @param indep.var character
+##' @param dep.var character
+##' @param variable variable by which to to facet the data
+##' @param alpha significance cutoff
+plot_signif <- function(d, indep.var="depth", dep.var="frac.reads", variable="pfam", alpha=0.05) {
 
   # Test that incoming parameter d is a data frame and has appropriate columns
   #  (meaning pfam, and/or fxn, plus trend and pval)
