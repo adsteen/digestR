@@ -18,7 +18,7 @@ NULL
 
 ##' An example sample key
 ##'
-##'
+##' @name ex_sample_key
 NULL
 ##'
 ##' A draft "function map"
