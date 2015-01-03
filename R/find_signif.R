@@ -5,7 +5,6 @@
 ##' @param indep.var independent variable, as a character
 ##' @param dep.var
 ##' @param alpha alpha value; defaults to 0.05
-##' @value data frame a subset of d, containing only those data points which show a significant trend
 ##' @export
 
 find_signif <- function(d, indep.var, dep.var, alpha) {
