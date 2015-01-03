@@ -1,16 +1,36 @@
 ##' Plots significant reads
 ##'
-plot_signif <- function(d, alpha=0.05) {
+##' @param d a data frame created by read_digestR
+##' @param
+plot_signif <- function(d, indep.var="depth", dep.var="frac.reads", alpha=0.05) {
 
-  signif <- trends[(trends$pval < 0.05 & !is.na(trends$pval)) , ]
-  signif_pfams <- unique(signif$pfam)
+  # Test that incoming parameter d is a data frame and has appropriate columns
+  #  (meaning pfam, and/or fxn, plus trend and pval)
 
-  p <- ggplot(d[d$pfam %in% signif_pfams, ], aes(x=depth, y=frac.reads)) +
+  # Test that d is a data frame
+  if(!("data.frame" %in% class(d))) {
+    stop("d must be a data frame")
+  }
+
+  # Test that d contains appropriately named columns
+  if(!indep.var %in% names(d)) {
+    stop(paste("There is no column in d named", indep.var))
+  }
+
+  if(!dep.var %in% names(d)) {
+    stop(paste("There is no column in d named", dep.var))
+  }
+
+  sig <- find_signif(d, indep.var=indep.var, dep.var=dep.var, alpha=alpha)
+
+  # Make plot
+  p <- ggplot(sig, aes_string(x=indep.var, y=dep.var)) +
     geom_point() +
     geom_smooth(method="lm", se=FALSE) +
     scale_x_reverse() +
     expand_limits(y=0) +
     coord_flip() +
-    facet_wrap(~pfam)
+    facet_wrap(as.formula(paste("~", variable)))
 
+  p
 }
