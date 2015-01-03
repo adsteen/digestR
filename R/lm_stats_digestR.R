@@ -7,10 +7,19 @@
 ##' @return Returns a one-row data frame containing (at present): slope, intercept, slope standard error, intercept standard error, p value, r-squared, and number of points.
 ##' @export
 
-lm_stats <- function(d, xvar, yvar, alpha=0.05) {
+lm_stats <- function(d, xvar, yvar) {
 
   # Create model
-  m <- lm(d[ , yvar] ~ d[ , xvar]) # Should wrap this in a tryCatch too!
+  m <- tryCatch(
+    lm(d[ , yvar] ~ d[ , xvar]), # Should wrap this in a tryCatch too!
+    error=function(cond) return(data.frame(slope = NA,
+                                           int = NA,
+                                           slope.se = NA,
+                                           int.se = NA,
+                                           pval = NA,
+                                           rsq = NA,
+                                           n = NA))
+  )
 
   # Also improve error message if xvar or yvar arent in d
   sum_m <- summary(m)
