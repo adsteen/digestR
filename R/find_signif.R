@@ -17,14 +17,14 @@ find_signif <- function(d, alpha) {
     stop("d must be a data frame")
   }
 
-  # Test that d contains appropriately named columns
-  if(!indep.var %in% names(d)) {
-    stop(paste("There is no column in d named", indep.var))
-  }
-
-  if(!dep.var %in% names(d)) {
-    stop(paste("There is no column in d named", dep.var))
-  }
+#   # Test that d contains appropriately named columns
+#   if(!indep.var %in% names(d)) {
+#     stop(paste("There is no column in d named", indep.var))
+#   }
+#
+#   if(!dep.var %in% names(d)) {
+#     stop(paste("There is no column in d named", dep.var))
+#   }
 
   # Determine which trends are significant
   signif <- d[(d$pval < 0.05 & !is.na(d$pval)) , ]
