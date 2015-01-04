@@ -38,7 +38,7 @@ read_digestR <- function(data.fn=NULL,
   } else {
     fxn_map <- read.csv(fxn.map.fn)
   }
-browser()
+
   # Test each data frame for necessary features
 
   # Trim map to only necessary columns
@@ -58,9 +58,15 @@ browser()
   # Remove na cases
   dm_mapped <- dm_mapped[!is.na(dm_mapped$abs.reads), ]
 
+  # Remove zeroes if asked
+  if(elim.zeroes & sum(dm_mapped$abs.reads > 0, na.rm=TRUE)) {
+    dm_mapped <- dm_mapped[-which(dm_mapped$abs.reads==0), ]
+  }
+
   # Calculate relative reads
-  #dm_mapped$frac.reads <- dm_mapped$abs.reads/dm_mapped$sum.reads
   dm_mapped$frac.reads <- dm_mapped$abs.reads/dm_mapped[ , normalizer]
+
+
 
   dm_mapped
 }
