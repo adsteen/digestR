@@ -8,7 +8,8 @@
 read_digestR <- function(data.fn=NULL,
                          key.fn=NULL,
                          fxn.map.fn=NULL,
-                         normalizer="sum.reads") {
+                         normalizer="sum.reads",
+                         elim.zeroes=TRUE) {
 
   ## Read files
   #d <- read.csv(data.fn)
