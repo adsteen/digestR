@@ -7,7 +7,7 @@
 ##' @param alpha alpha value; defaults to 0.05
 ##' @export
 
-find_signif <- function(d, indep.var, dep.var, alpha) {
+find_signif <- function(d, alpha) {
 
   # Test that incoming parameter d is a data frame and has appropriate columns
   #  (meaning pfam, and/or fxn, plus trend and pval)
@@ -33,9 +33,9 @@ find_signif <- function(d, indep.var, dep.var, alpha) {
   # Return a subset of the original data frame, containing only the data points that are part of a significant trend
   d_signif <- d[d$pfam %in% signif_pfams, ]
 
-  if(nrow(d_signif) == 0) {
-    warning(paste("There were no significant trends in ", dep.var, " with respect to ", indep.var))
-  }
+  #if(nrow(d_signif) == 0) {
+  #  warning(paste("There were no significant trends in ", dep.var, " with respect to ", indep.var))
+  #}
 
   d_signif
 }
