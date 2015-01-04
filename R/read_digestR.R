@@ -11,11 +11,6 @@ read_digestR <- function(data.fn=NULL,
                          normalizer="sum.reads",
                          elim.zeroes=TRUE) {
 
-  ## Read files
-  #d <- read.csv(data.fn)
-  #key <- read.csv(key.fn)
-  #map <- read.csv(map.fn)
-
   # Read pfam abundance
   if(is.null(data.fn)) {
     d <- ex_data_wide
@@ -35,7 +30,8 @@ read_digestR <- function(data.fn=NULL,
 
   # Read the map
   if(is.null(fxn.map.fn)) {
-    fxn_map <- pfam_fxn_map
+    #fxn_map <- pfam_fxn_map
+    fxn_map <- read.csv("../data/pfam_fxn_map.csv")
   } else {
     fxn_map <- read.csv(fxn.map.fn)
   }
@@ -66,8 +62,6 @@ read_digestR <- function(data.fn=NULL,
 
   # Calculate relative reads
   dm_mapped$frac.reads <- dm_mapped$abs.reads/dm_mapped[ , normalizer]
-
-
 
   dm_mapped
 }
