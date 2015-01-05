@@ -3,7 +3,21 @@
 \alias{find_trend}
 \title{Quantifies linear trends in pfam or fxn with independant variable}
 \usage{
-find_trend(d, indep.var = "depth", param = "frac.reads", disc = "pfam")
+find_trend(d, indep.var = "depth", param = "frac.reads",
+  variable = "pfam", prog = "none")
+}
+\arguments{
+\item{d}{}
+
+\item{indep.var}{default "depth"}
+
+\item{param}{default "frac.reads" should rename "dep.var"}
+
+\item{variable}{default "pfam", variable by which to subset the data}
+
+\item{prog}{show a progress bar for the ddply call}
+
+\item{elim.zeroes}{eliminate pfams which show up as zer0}
 }
 \description{
 Quantifies linear trends in pfam or fxn with independant variable

@@ -3,15 +3,15 @@
 \alias{read_digestR}
 \title{Reads the 3 necessary files for digestR analysis}
 \usage{
-read_digestR(data.fn = "data/ex_data_wide.csv",
-  key.fn = "data/ex_sample_key.csv", map.fn = "data/pfam_fxn_map.csv")
+read_digestR(data.fn = NULL, key.fn = NULL, fxn.map.fn = NULL,
+  normalizer = "sum.reads", elim.zeroes = TRUE)
 }
 \arguments{
 \item{data.fn}{}
 
 \item{key.fn}{}
 
-\item{map.fn}{}
+\item{fxn.map.fn}{}
 }
 \description{
 digestR requires a dataset, a key, and a map. This function reads all of these either from user-supplied files or default examples.

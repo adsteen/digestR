@@ -3,6 +3,7 @@
 export(find_signif)
 export(find_trend)
 export(lm_stats)
+export(plot_signif)
 export(read_digestR)
 import(ggplot2)
 import(plyr)

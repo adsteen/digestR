@@ -3,16 +3,16 @@
 \alias{find_signif}
 \title{Finds significant trends}
 \usage{
-find_signif(d, indep.var, dep.var, alpha)
+find_signif(d, alpha)
 }
 \arguments{
 \item{d}{data frame for which slopes have been calculated}
 
+\item{alpha}{alpha value; defaults to 0.05}
+
 \item{indep.var}{independent variable, as a character}
 
 \item{dep.var}{}
-
-\item{alpha}{alpha value; defaults to 0.05}
 }
 \description{
 This is a bit of a placeholder function - later I will come up with a more statistically valid way of finding true trends
