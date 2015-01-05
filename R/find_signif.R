@@ -27,7 +27,7 @@ find_signif <- function(d, alpha) {
 #   }
 
   # Determine which trends are significant
-  signif <- d[(d$pval < 0.05 & !is.na(d$pval)) , ]
+  signif <- d[(d$pval < 0.05 & is.finite(d$pval)), ]
   signif_pfams <- unique(signif$pfam)
 
   # Return a subset of the original data frame, containing only the data points that are part of a significant trend
