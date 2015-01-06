@@ -4,6 +4,7 @@
 ##' @param data.fn
 ##' @param key.fn
 ##' @param fxn.map.fn
+##' @param elim.zeroes default TRUE
 ##' @export
 read_digestR <- function(data.fn=NULL,
                          key.fn=NULL,
@@ -30,8 +31,8 @@ read_digestR <- function(data.fn=NULL,
 
   # Read the map
   if(is.null(fxn.map.fn)) {
-    #fxn_map <- pfam_fxn_map
-    fxn_map <- read.csv("../data/pfam_fxn_map.csv")
+    fxn_map <- pfam_fxn_map
+    #fxn_map <- read.csv("../data/pfam_fxn_map.csv")
   } else {
     fxn_map <- read.csv(fxn.map.fn)
   }
