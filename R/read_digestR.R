@@ -12,6 +12,7 @@ read_digestR <- function(data.fn=NULL,
                          normalizer="sum.reads",
                          elim.zeroes=TRUE) {
 
+  browser()
   # Read pfam abundance
   if(is.null(data.fn)) {
     d <- ex_data_wide
@@ -40,6 +41,7 @@ read_digestR <- function(data.fn=NULL,
   # Test each data frame for necessary features
 
   # Trim map to only necessary columns
+  # DEBUGGING CHANGE TO min_map
   min.map <- fxn_map[ , c("pfam", "fxn")]
 
   # Melt data file, which is assumed to be wide
@@ -57,7 +59,7 @@ read_digestR <- function(data.fn=NULL,
   dm_mapped <- dm_mapped[!is.na(dm_mapped$abs.reads), ]
 
   # Remove zeroes if asked
-  if(elim.zeroes & sum(dm_mapped$abs.reads > 0, na.rm=TRUE)) {
+  if(elim.zeroes & (sum(dm_mapped$abs.reads == 0, na.rm=TRUE)) > 0) { # This can't be the most efficient way to do this
     dm_mapped <- dm_mapped[-which(dm_mapped$abs.reads==0), ]
   }
 
