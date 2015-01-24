@@ -12,7 +12,7 @@ read_digestR <- function(data.fn=NULL,
                          normalizer="sum.reads",
                          elim.zeroes=TRUE) {
 
-  browser()
+
   # Read pfam abundance
   if(is.null(data.fn)) {
     d <- ex_data_wide
